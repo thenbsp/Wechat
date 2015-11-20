@@ -12,7 +12,7 @@ class EventSubscribe extends Event
      */
     public function __construct(array $options = array())
     {
-        $required = array('ToUserName', 'FromUserName', 'CreateTime', 'MsgType', 'Event');
+        $required = array('ToUserName', 'FromUserName', 'CreateTime', 'MsgType', 'Event', 'EventKey');
 
         $validator = new OptionValidator();
         $validator

@@ -101,15 +101,15 @@ abstract class AbstractClient
     /**
      * 通过 code 换取 AccessToken.
      */
-    public function getAccessToken($code, $state = null)
+    public function getAccessToken($code, $state = null, $checkState = true)
     {
-        if (null === $state && !isset($_GET['state'])) {
+        if ($checkState && null === $state && !isset($_GET['state'])) {
             throw new \Exception('Invalid Request');
         }
 
         // http://www.twobotechnologies.com/blog/2014/02/importance-of-state-in-oauth2.html
         $state = $state ?: $_GET['state'];
-        if (!$this->stateManager->isValid($state)) {
+        if ($checkState && !$this->stateManager->isValid($state)) {
             throw new \Exception(sprintf('Invalid Authentication State "%s"', $state));
         }
 

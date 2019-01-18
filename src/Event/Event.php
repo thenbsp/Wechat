@@ -28,4 +28,28 @@ abstract class Event extends ArrayCollection
      * check event options is valid.
      */
     abstract public function isValid();
+    
+    /**
+     * get event content.
+     */
+    public function getContent()
+    {
+        return $this['Content'];
+    }
+
+    /**
+     * get event Initiator.
+     */
+    public function getFromUser()
+    {
+        return $this['FromUserName'];
+    }
+
+    /**
+     * get event recipient.
+     */
+    public function getToUser()
+    {
+        return $this['ToUserName'];
+    }
 }
